@@ -18,16 +18,19 @@
 References: From [LLamaIndex Evaluation](https://gpt-index.readthedocs.io/en/stable/optimizing/evaluation/evaluation.html).
 - [Faithfulness](https://gpt-index.readthedocs.io/en/stable/examples/evaluation/faithfulness_eval.html)
 - [Relevancy](https://gpt-index.readthedocs.io/en/stable/examples/evaluation/relevancy_eval.html)
-- []
+- [Correctness]()
+- [Guideline Adherence]()
+- [Sentence Similarity]()
 
 ## **Summary**
 | Metric | | Query | Response | Context | Reference | 
 | - | - | - | - | - | - |
-| Faithfulness | | | | |
-| Relevancy | | | | | |
-| Correctness | | | | | |
-| Guideline Adherence: | | | | | |
-| Correctness | | | | | |
+| Faithfulness | | NO | YES | YES | NO
+| Relevancy | | YES | YES | YES | NO |
+| Correctness | | YES | YES | NO | YES |
+| Guideline Adherence: |  | YES | YES | NO | NO |
+| Sentence Similarity |  |  |  |  |  |
+| Parir |  |  |  |  |
 
 ## 0. Base Evaluator Class:
 To implement a custom Evaluator Class, create a subclass and overide **aevaluate/aevaluate_response** methods.

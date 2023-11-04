@@ -1,5 +1,5 @@
 langchain
-llamaindex
+llama_index
 ragas
 weaviate-client
 faiss-cpu
