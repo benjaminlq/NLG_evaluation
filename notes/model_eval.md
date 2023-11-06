@@ -1,2 +1,5 @@
-1. Bi-Encoder
-2. Cross-Encoder
+# Model-based evaluation: Requires Ground-truth labels
+
+## Embedding Similarity Score
+
+## Sentence Similarity Score
