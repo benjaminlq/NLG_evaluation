@@ -19,7 +19,7 @@
 
 Measure the number of queries in which the correct contexts are included inside the retrieved contexts
 
-$$ Hit rate = {{Queries containing correct contexts} \over {Total number of queries}} $$
+$$ Hit\ rate = {{Queries\ containing\ correct\ contexts} \over {Total\ number\ of\ queries}} $$
 
 ## 2. Mean Average Precision (MAP)
 
