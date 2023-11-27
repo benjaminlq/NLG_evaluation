@@ -20,6 +20,7 @@ References:
 
 ### 2. ROUGE
 
+### 3. METEOR
 <br><br>
 
 # II. Retrieval Metrics
