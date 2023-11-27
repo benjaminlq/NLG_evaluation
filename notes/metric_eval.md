@@ -68,3 +68,5 @@ where Q is the number of queries and q_i is the ith query.
   $$ IDCG@k = \sum_{i=1}^{I(k)}\frac{Rel(i)}{log_{2}(i+1)} $$
 - `Normalized Discounted Cumulative Gain (NDCG):`
   $$ NDCG@k = \frac{DCG@k}{IDCG@k} $$
+
+  ## 5. LLamaIndex Evaluation
