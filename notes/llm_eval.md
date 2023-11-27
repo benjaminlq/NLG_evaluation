@@ -477,3 +477,107 @@ eval_results = await runner.aevaluate_queries(
     query_kwargs=answer_dict
 )
 ```
+
+# II. RAGAS LLM-based-evaluation
+## 1. Retrieval Metric
+### Context Precision
+Measures whether all of the question relevant items present in the contexts are ranked higher or not.
+
+Requires: 
+- Questions
+- Contexts
+
+<br>
+
+![Alt text](image.png)
+
+```
+from ragas.metrics import ContextPrecision
+
+context_precision = ContextPrecision()
+dataset: Dataset({features: ['question','contexts']})
+results = context_precision.score(dataset)
+```
+
+
+### Context Recall
+Measures the extent to which the retrieved context aligns with the ground truth.
+
+Requires: 
+- Ground Truths
+- Contexts
+
+<br>
+
+![Alt text](image-1.png)
+
+```
+from ragas.metrics import ContextRecall
+
+context_recall = ContextRecall()
+dataset: Dataset({features: ['contexts','ground_truths']})
+results = context_recall.score(dataset)
+```
+
+### Context Relevancy
+Measures degree of relevancy against noise (Another Precision metrics). Equals to number of relevant sentences in contexts / total no of sentences in contexts.
+
+Requires:
+- Questions
+- Contexts
+
+<br>
+
+![Alt text](image-2.png)
+
+```
+from ragas.metrics import ContextRelevance
+
+context_relevancy = ContextRelevance()
+dataset: Dataset({features: ['question','contexts'],num_rows: 25})
+results = context_relevancy.score(dataset)
+```
+
+## 2. Answer Generation Metric
+### Faithfulness
+Measures the factual consistency of the generated answer against the given context. It is calculated from answer and retrieved context.
+
+Requires:
+- Questions
+- Contexts
+- Answers
+
+<br>
+
+![Alt text](image-3.png)
+
+```
+from ragas.metrics.faithfulness import Faithfulness
+
+faithfulness = Faithfulness()
+dataset: Dataset({features: ['question','contexts','answer'], num_rows: 25})
+results = faithfulness.score(dataset)
+```
+
+### Answer Correctness 
+
+Answer Correctness measures the accuracy of the generated answer when compared to the ground truth. 
+
+Answer correctness encompasses two critical aspects: semantic similarity between the generated answer and the ground truth, as well as factual similarity.
+
+$$ Correctness\ Score = Faithfulness\ Score * W + Similarity\ Score * (1-W) $$
+
+Similarity Score is calculated using a CrossEncoder trained on BERT architecture (classifier on CLS token, ground truth & response are separated by SEP token). Refer to [Similarity Score](model_eval.md).
+
+Requires:
+- Ground Truths
+- Answers
+
+```
+from ragas.metrics import AnswerCorrectness
+
+answer_correctness = AnswerCorrectness(weights=[0.4,0.6])
+# [Faithfulness Weight, Similarity Weight]
+dataset: Dataset({features: ['answer','ground_truths'], num_rows: 25})
+results = answer_correctness.score(dataset)
+```

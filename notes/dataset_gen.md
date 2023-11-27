@@ -1,6 +1,11 @@
 # Synthetic Dataset Generation
 
 # LlamaIndex
+
+References:
+- [LlamaIndex Questions Generation](https://docs.llamaindex.ai/en/stable/examples/evaluation/QuestionGeneration.html)
+- [RAGAS Dataset Generation](https://docs.ragas.io/en/latest/concepts/testset_generation.html)
+
 ## 1. Evaluation Dataset Generator
 ### Prompt
 ```
