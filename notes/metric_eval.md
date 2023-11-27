@@ -70,3 +70,5 @@ where Q is the number of queries and q_i is the ith query.
   $$ NDCG@k = \frac{DCG@k}{IDCG@k} $$
 
   ## 5. LLamaIndex Evaluation
+
+  
